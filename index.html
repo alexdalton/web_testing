@@ -10,8 +10,10 @@
     // Listen for visibility change.
     document.addEventListener("visibilitychange", function() {
       if (document.visibilityState !== 'visible') {
+        console.log('Document not visible. Hiding input element.');
         x.style.display = 'none';
       } else {
+        console.log('Document visible. Displaying input element.');
         x.style.display = 'block';
       }
     });
