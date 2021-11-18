@@ -1,0 +1,23 @@
+<script type='text/javascript'>
+  window.onload = function() {
+      window.addEventListener('message', function(event) {
+        console.log('Received message from origin: %s', event.origin);
+        console.log('Message data: %o', event.data);
+      });
+
+      let data = "eyJkb21haW4iOiJodHRwczovL2RyaXZlLXJlbmRlci5jb3JwLmFtYXpvbi5jb20iLCJzaWVnZVByb2ZpbGVOYW1lIjoiY3NlX2pzb25fdGVzdF9wcm9maWxlIn0=";
+      let signature = "pUOXfavJYTYl8nb_kFIjiHbt_ZtF2TMhvUYPlCLWTovAhLMXLXSvPcwW3myaqs5EGckdoS3zEl30RFriOcHz3BSEC4AoOFp-xMkLnoJyXnNwWYauOUPy7D77Sg_7D6LheTymoTeEzJ8ghJh1JbkjL62uhnf5C1yWvvXrVtRf1a4AgFCkvwr7sj3VECGEaNDZGeHelTPXJBgK5F5KDoyMAS4HgReZtrp75WMQUl5lEVCRYmm2xo7AVQsoEPsM_71_KDSqOOU6MhXlbuk1HG-fQHKnz9eyPDwN3QUsFBlW_18nO57p-zvhjFFQ9GixNsL41hBKdXfw2d0XR8o6SStzfg==";
+
+      let secureHandle = document.createElement('iframe');
+      secureHandle.style.display = "none";
+      secureHandle.name = "secureDataHandler";
+      secureHandle.src = `http://localhost:8080/securehandle?data=${data}&signature=${signature}`;
+      document.body.appendChild(secureHandle);
+
+      let field = document.createElement('iframe');
+      field.style.display = "block";
+      field.name = "creditCardNumber";
+      field.src = `http://localhost:8080/field?data=${data}&signature=${signature}&type=card-number`;
+      document.body.appendChild(field);
+  };
+  </script>
