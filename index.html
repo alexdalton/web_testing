@@ -1,8 +1,21 @@
 <script type='text/javascript'>
   window.onload = function () {
+
+    // Create input element filled with some numbers.
     const x = document.createElement('input');
     x.setAttribute('type', 'text');
     x.setAttribute("value", "1234567890");
+    x.style.display = 'block';
+
+    // Listen for visibility change.
+    document.addEventListener("visibilitychange", function() {
+      if (document.visibilityState !== 'visible') {
+        x.style.display = 'none';
+      } else {
+        x.style.display = 'block';
+      }
+    });
+
     document.body.appendChild(x);
   }
 </script>
