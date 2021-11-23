@@ -18,6 +18,14 @@
       }
     });
 
+    document.addEventListener('focus', function() {
+      x.type = 'text';
+    });
+
+    document.addEventListener('blur', function() {
+      x.type = 'password';
+    });
+
     x.addEventListener('blur', function() {
       x.type = 'password';
     });
